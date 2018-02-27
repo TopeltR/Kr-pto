@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/custom.css">
+</head>
+<body>
+    <div class="center">
+        <img src="/static/logo.png" alt="Badasss distribution" height="300" width="300">
+        <form method="POST" action="{{ url_for('index') }}">
+            {{ form.csrf_token }}
+
+            {{ form.inp.label }} {{ form.inp(size=20) }}
+            <br><br>
+            {{ form.key.label }} {{ form.key(size=20) }}
+            <br><br>
+            {{ form.otp_enc }}
+            {{ form.otp_dec }}
+            {{ form.sha_2 }}
+            {{ form.md5_dec }}
+            <br><br>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <a class=flashes>
+                        {% for message in messages %}
+                             {{ message }}
+                            <br><br>
+                        {% endfor %}
+                    </a>
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div>
+</body>
+</html>
